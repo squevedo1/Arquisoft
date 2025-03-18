@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-so63t%9(1x%ptgk$a5oqcg*sjwq$5@p9@&5ohb4=rjh9%wrdc3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
@@ -37,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Historiales',
+    'evento_clinico',
+    'pacientes',
+    'historia_clinica',
 ]
 
 MIDDLEWARE = [
