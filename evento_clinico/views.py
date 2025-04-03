@@ -47,3 +47,13 @@ def evento_clinico_create(request):
             vl.create_evento_clinico(form)
             messages.add_message(request, messages.SUCCESS, 'Successfully created evento medico')
             return HttpResponseRedirect(reverse('evento_clinico_create'))
+        else:
+            print(form.errors)
+    else:
+        form = EventoClinicoForm
+    
+    context = {
+        'form': form
+    }
+    
+    return render(request, context)
