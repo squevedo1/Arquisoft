@@ -56,4 +56,4 @@ def evento_clinico_create(request):
         'form': form
     }
     
-    return render(request, context)
+    return render(request, 'measurementCreate.html', context)
