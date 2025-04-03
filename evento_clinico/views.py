@@ -64,4 +64,8 @@ def evento_clinico_create(request):
     return render(request, 'measurementCreate.html', context)
 
 def eventos_list(request):
-    
+    eventos = vl.get_eventos_clinicos()
+    context = {
+        'eventos_list': eventos
+    }
+    return render(request, 'measurements.html', context)
