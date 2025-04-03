@@ -44,9 +44,14 @@ def evento_clinico_create(request):
     if request.method == 'POST':
         form = EventoClinicoForm(request.POST)
         if form.is_valid():
-            vl.create_evento_clinico(form)
-            messages.add_message(request, messages.SUCCESS, 'Successfully created evento medico')
-            return HttpResponseRedirect(reverse('evento_clinico_create'))
+            try:
+                vl.create_evento_clinico(form)
+                messages.add_message(request, messages.SUCCESS, 'Successfully created evento medico')
+                return HttpResponseRedirect(reverse('evento_clinico_create'))
+            except Exception as e:
+                print(f"Error en create_evento_clinico: {e}")
+                messages.add_message(request, messages.ERROR, 'Error al crear evento médico')
+                return render(request, 'measurementCreate.html', {'form': form})
         else:
             print(form.errors)
     else:
@@ -57,3 +62,6 @@ def evento_clinico_create(request):
     }
     
     return render(request, 'measurementCreate.html', context)
+
+def eventos_list(request):
+    
