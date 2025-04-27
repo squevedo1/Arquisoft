@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'Arquisoft.wsgi.application'
 DATABASES = {
     'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'principal_db',
+		'NAME': 'principal-db',
 		'USER': 'admin',
 		'PASSWORD': '1234',
 		'HOST': '10.128.0.52',
