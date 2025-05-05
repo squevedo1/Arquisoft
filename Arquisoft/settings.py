@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'evento_clinico',
     'pacientes',
     'historia_clinica',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -81,10 +82,10 @@ WSGI_APPLICATION = 'Arquisoft.wsgi.application'
 DATABASES = {
     'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'principal-db',
-		'USER': 'admin',
-		'PASSWORD': '1234',
-		'HOST': '10.128.0.52',
+		'NAME': 'monitoring_db',
+		'USER': 'monitoring_user',
+		'PASSWORD': 'isis2503',
+		'HOST': '10.128.0.60',
 		'PORT': '5432'
 	}
 }
@@ -132,3 +133,24 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "https://dev-rxaxe3rjirzck2qh.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.59.233.222:8080"
+
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-rxaxe3rjirzck2qh.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'zk3DbatCFME8U8OSVGlTcoe81yCiOyMa'
+SOCIAL_AUTH_AUTH0_SECRET = 'XYH229hac7IEo1Sxl7o7Jf4__ipIJz6nEzdV7BfRFIsEPhzB3wd6RBIPnuN8TI0-'
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email',
+    'role',
+]
+
+AUTHENTICATION_BACKENDS = {
+    'Arquisoft.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend',
+}
